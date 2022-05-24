@@ -1,0 +1,5 @@
+locations:
+    Seabank.techs.hvac_import.constraints.energy_cap_max: 300000          # Max Import - WPD Super Grid Transformer Flows - South West
+    Iron Acton.techs.hvac_import.constraints.energy_cap_max: 580000       # Max Import - WPD Super Grid Transformer Flows - South West
+    Seabank.techs.green_ppa_import.constraints.energy_cap_max: 30000      # Max Renewable PPA Import (30MW)
+    Iron Acton.techs.green_ppa_import.constraints.energy_cap_max: 100000  # Max Renewable PPA Import (100MW)

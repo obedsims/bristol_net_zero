@@ -1,0 +1,122 @@
+links:
+     Feeder Road BSP,Bedminster:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 37500    #! This is the firm capacity of the substation (WPD Data Portal 2022)
+     Feeder Road BSP,Bishopsworth:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     Feeder Road BSP,Bower Ashton:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     Feeder Road BSP,Broadweir Primary:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     Lockleaze BSP,Clifton:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 46000
+     Lockleaze BSP,Cotham Primary:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     Lockleaze BSP,Eastville:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     Feeder Road BSP,Feeder Rd 11kv:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 51750
+     Feeder Road BSP,Feeder Road B:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 18750
+     Lockleaze BSP,Lockleaze:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     St Pauls BSP,St Pauls Bsp 11kv:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 33520    #! Capacity < Max Demand
+     Feeder Road BSP,Filton DC:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     Feeder Road BSP,Whitchurch:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 25140
+     Feeder Road BSP,Woodland Way:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 29000   #! Capacity < Max Demand - Increased to match WPD live data from 17,250kW
+     Avonmouth BSP,Avonmouth Docks:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 18750
+     Avonmouth BSP,Avonmouth Primary:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 34500
+     Avonmouth BSP,Cairns Road:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 51750
+     Avonmouth BSP,Kingsweston:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 23820
+     Avonmouth BSP,Stoke Bishop:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 17250
+     Bristol Channel,Seabank:
+         techs:
+             hvac_subsea_new:   # The maximum appropriate distance for HVAC transmission for offshore wind power is considered to be around 80 kilometres
+                 constraints:
+                     energy_cap_max: 45000     # Maximum capacity of the tidal stream turbines
+                     one_way: true
+     Avonmouth BSP,Seabank:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 90000
+     Lockleaze BSP,Iron Acton:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 90000
+     Feeder Road BSP,Iron Acton:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 190000         # Estimated based on max demand as this isn't available online
+     St Pauls BSP,Seabank:
+         techs:
+             hvac:
+                 constraints:
+                     energy_cap_max: 33520

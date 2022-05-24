@@ -1,0 +1,162 @@
+##
+# LOCATIONS
+##
+
+locations:
+    Avonmouth Docks:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 70
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000  # Just above the average utility battery size in the UK 2021
+    Avonmouth Primary:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 48000
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Bedminster:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 68560
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Bishopsworth:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 67310
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Bower Ashton:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 11410
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Cairns Road:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 145600
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Clifton:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 36370
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Cotham Primary:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 1980
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Eastville:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 80760
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Feeder Rd 11kv:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 197410
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Feeder Road B:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 10200
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Kingsweston:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 4160
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Lockleaze:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 70900
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    St Pauls Bsp 11kv:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max:  63140
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Stoke Bishop:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 40220
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Woodland Way:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 109220
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Whitchurch:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 98810
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Filton DC:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 69130
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Broadweir Primary:
+        techs:
+            small_scale_battery:
+                constraints:
+                    storage_cap_max: 2150
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000
+    Seabank:
+        techs:
+            utility_battery:
+                constraints:
+                    storage_cap_max: 50000

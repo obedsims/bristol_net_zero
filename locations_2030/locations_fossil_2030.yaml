@@ -1,0 +1,14 @@
+locations:
+      Avonmouth Docks,Avonmouth Primary,Bedminster,Bishopsworth,Bower Ashton,Broadweir Primary,Cairns Road,Clifton,Cotham Primary,Eastville,Feeder Rd 11kv,Feeder Road B,Kingsweston,Lockleaze,St Pauls Bsp 11kv,Stoke Bishop,Woodland Way,Filton DC,Whitchurch,Iron Acton:
+        techs:
+          ccgt_existing:
+            constraints:
+              energy_cap_max: 0
+      Seabank:
+        techs:
+          ccgt_existing:
+            constraints:
+              energy_cap_max: 445600    # Seabank power station assumed max capacity for Bristol City Region
+          ccgt_ccs:
+            constraints:
+              energy_cap_max: 445600    # Seabank power station assumed max capacity for Bristol City Region

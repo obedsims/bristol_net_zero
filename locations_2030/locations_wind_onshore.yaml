@@ -1,0 +1,157 @@
+##
+# LOCATIONS
+##
+
+locations:
+    Avonmouth Docks:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 15000
+    Avonmouth Primary:
+        techs:
+            wind_onshore:
+                constraints:
+                      energy_cap_equals: 22500      # This is the currently installed capacity (kW)
+            wind_onshore_new:
+                constraints:
+                      energy_cap_max: 30000         # This is the est. max possible installed capacity (kW)
+    Bedminster:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Bishopsworth:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Bower Ashton:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Broadweir Primary:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Cairns Road:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Clifton:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Cotham Primary:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Eastville:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Feeder Rd 11kv:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Feeder Road B:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Kingsweston:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_equals: 8200        # This is the currently installed capacity (kW)
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 25000        # This is the est. max possible installed capacity (kW)
+    Lockleaze:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    St Pauls Bsp 11kv:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Stoke Bishop:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Woodland Way:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Whitchurch:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0
+    Filton DC:
+        techs:
+            wind_onshore:
+                constraints:
+                    energy_cap_max: 0
+            wind_onshore_new:
+                constraints:
+                    energy_cap_max: 0

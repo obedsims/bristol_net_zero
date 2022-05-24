@@ -1,0 +1,171 @@
+##
+# LOCATIONS
+##
+
+locations:
+    Avonmouth Docks:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 0
+    Avonmouth BSP:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_equals: 1830        # This is the specific installed capacity currently (kW)
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 44730       # This is the maximum possible installed capacity (kW)
+                    # Max capacity is determined based on MW per available m2 for monocrystalline cells - http://www.suncyclopedia.com/en/area-required-for-solar-pv-power-plants/
+    Avonmouth Primary:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 0
+    Bedminster:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 490
+    Bishopsworth:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 12200
+    Bower Ashton:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 10
+    Broadweir Primary:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 0
+    Cairns Road:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 110
+    Clifton:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 20
+    Cotham Primary:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 0
+    Eastville:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 60
+    Feeder Rd 11kv:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 18400
+    Feeder Road B:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 140
+    Kingsweston:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 32020
+    Lockleaze:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 2320
+    St Pauls Bsp 11kv:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 3590
+    Stoke Bishop:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 0
+    Woodland Way:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 380
+    Whitchurch:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 10680
+    Filton DC:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_max: 0
+            utility_solar_new:
+                constraints:
+                    energy_cap_max: 90
+    Seabank:
+        techs:
+            utility_solar:
+                constraints:
+                    energy_cap_equals: 1800

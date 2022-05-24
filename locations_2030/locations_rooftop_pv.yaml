@@ -1,0 +1,173 @@
+##
+# LOCATIONS
+##
+
+locations:
+    Avonmouth Docks:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 0           # CSE Report states approx 27-30MW already installed this as been distributed across each the supply regions
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 3843
+    Avonmouth Primary:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 0
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 65938
+    Bedminster:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 61113
+    Bishopsworth:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 45031
+    Bower Ashton:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 16012
+    Broadweir Primary:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 5562
+    Cairns Road:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 80752
+    Clifton:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 33045
+    Cotham Primary:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 0
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 4521
+    Eastville:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 49695
+    Feeder Rd 11kv:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 147765
+    Feeder Road B:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 18096
+    Kingsweston:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 0
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 49253
+    Lockleaze:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 42134
+    St Pauls Bsp 11kv:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 64793
+    Stoke Bishop:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 20755
+    Woodland Way:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 64360
+    Whitchurch:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 58432
+    Filton DC:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 2800
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 43293
+    Seabank:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 0
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 0
+    Iron Acton:
+        techs:
+            pv_rooftop:
+                constraints:
+                    energy_cap_equals: 0
+            pv_rooftop_new:
+                constraints:
+                    energy_cap_max: 0

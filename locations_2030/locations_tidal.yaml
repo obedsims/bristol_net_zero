@@ -1,0 +1,10 @@
+##
+# LOCATIONS
+##
+
+locations:
+    Bristol Channel:
+        techs:
+            tidal_stream:
+                constraints:
+                    energy_cap_max: 45000          # Assume maximum of 30 AR1500 turbines
