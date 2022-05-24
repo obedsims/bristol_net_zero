@@ -1,0 +1,112 @@
+tech_groups:
+    pv:
+        essentials:
+            parent: supply_electricity_renewable
+    wind:
+        essentials:
+            parent: supply_electricity_renewable
+
+    # large-scale-solar-start
+    utility_solar_base:
+        essentials:
+            name: 'Utility-Scale Solar (existing)'
+            color: '#00ccff'
+            parent: pv
+        constraints:
+            energy_cap_max: inf            # Add generic value, this is later modified in locations_utility_solar.yaml
+            resource: file=pv_resourse_avonmouth.csv
+            resource_unit: energy_per_cap
+            resource_area_max: inf          # Calculated available area for utility solar PV generation in Bristol
+            lifetime: 25
+        costs:
+            monetary:
+                energy_cap: 400     # 2030 GBP/kW - median cost scenario - BEIS generation costs
+                om_annual: 6.4      # 2030 GBP/kW - median cost scenario - BEIS generation costs
+            co2:
+                om_prod: 0.048      # kg CO2eq/kWh, {ipcc_ar5_wg3}
+    # large-scale-solar-end
+
+    # rooftop-solar-start
+    pv_rooftop_base:
+        essentials:
+            name: 'Rooftop Solar PV (existing)'
+            color: '#E27C7C'
+            parent: pv
+        constraints:
+            energy_cap_max: inf         # Add generic value, this is later modified in locations_rooftop_pv.yaml
+            resource: file=rooftop_pv_resourse_eastville.csv # kW - Eastville is the selected location - assumes average roof slope of 40deg
+            resource_unit: energy_per_cap
+            resource_area_max: inf
+            lifetime: 25
+        costs:
+            monetary:
+                energy_cap: 1200    # 2030 GBP/kW - median cost scenario - BEIS generation costs
+                om_annual: 7.0      # 2030 GBP/kW - median cost scenario - BEIS generation costs
+                export: -0.168      # 2030 GBP/kWh {Octopus Energy 2022 SEG inflated by 2% each year}
+            co2:
+                om_prod: 0.088  # kg CO2eq/kWh - https://www.parliament.uk/globalassets/documents/post/postpn_383-carbon-footprint-electricity-generation.pdf
+    # rooftop-solar-end
+
+    # wind-onshore-start
+    wind_onshore_base:
+        essentials:
+            name: 'Onshore Wind (existing)'
+            color: '#6cd4c5'
+            parent: wind
+        constraints:
+            energy_cap_max: inf    # kW    Add generic value, this is later modified in locations_wind_onshore.yaml
+            resource: file=onshore_wind_resource.csv
+            resource_unit: energy_per_cap
+            resource_area_max: inf
+            lifetime: 25
+        costs:
+            monetary:
+                energy_cap: 1000   #  2030 GBP/kW - median cost scenario - BEIS generation costs
+                om_prod: 0.001     #  2030 GBP/kW - median cost scenario - BEIS generation costs
+                om_annual: 23.5    #  2030 GBP/kW - median cost scenario - BEIS generation costs
+            co2:
+                om_prod: 0.400     # kg CO2eq/kWh - https://www.parliament.uk/globalassets/documents/post/postpn_383-carbon-footprint-electricity-generation.pdf
+    # wind-onshore-end
+
+techs:
+
+    utility_solar:
+        essentials:
+            parent: utility_solar_base
+        costs:
+            monetary:
+                energy_cap: 0   # 2030 £/kW - Existing plants are written off
+
+    utility_solar_new:
+        essentials:
+            color: '#00008B'
+            name: 'Utility-Scale Solar (new build)'
+            parent: utility_solar_base
+
+
+    pv_rooftop:
+        essentials:
+            parent: pv_rooftop_base
+        costs:
+            monetary:
+                energy_cap: 0   # 2030 £/kW - Existing plants are written off
+
+    pv_rooftop_new:
+        essentials:
+            color: '#FDBC5E'
+            name: 'Rooftop Solar PV (new build)'
+            parent: pv_rooftop_base
+
+
+    wind_onshore:
+        essentials:
+            parent: wind_onshore_base
+        costs:
+            monetary:
+                energy_cap: 0   # 2030 £/kW - Existing plants are written off
+
+    wind_onshore_new:
+        essentials:
+            color: '#996699'
+            name: 'Onshore Wind (new build)'
+            parent: wind_onshore_base

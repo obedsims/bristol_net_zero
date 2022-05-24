@@ -1,0 +1,25 @@
+tech_groups:
+    tidal:
+        constraints:
+            resource: inf
+        essentials:
+            parent: supply_electricity_renewable
+
+techs:
+    tidal_stream:
+        essentials:
+            color: '#8B0043'
+            name: 'Tidal stream (new build)'
+            parent: tidal
+        constraints:
+            energy_cap_max: inf
+            lifetime: 18    # {Simec Atlantis state 25 years of operation however this hasn't been proven therefore a conservative 18 years has been used}
+            resource: file=tidal_stream_resource.csv
+            resource_unit: energy
+        costs:
+            monetary:
+                energy_cap: 3200    # GBP/kW - BEIS Generation Costs 2020
+                om_annual: 114      # GBP/kW
+                om_prod: 0.006      # GBP/kWh - BEIS Generation Costs 2020
+            co2:
+                om_prod: 0.015 # https://www.parliament.uk/globalassets/documents/post/postpn_383-carbon-footprint-electricity-generation.pdf

@@ -1,0 +1,33 @@
+##
+# NB: all per_distance constraints here are per 100 km
+##
+
+tech_groups:
+    transmission_electricity:
+        essentials:
+            carrier: electricity
+            parent: transmission
+        constraints:
+            energy_eff: 1.0
+
+techs:
+    hvac:
+        essentials:
+            name: 'AC distribution (existing)'    # Generic HVAC intra-zonal distribution technology
+            parent: transmission_electricity
+        costs:
+            monetary:
+                om_prod: 0.00234      # 2030 £/kWh - inflated by 2% each year - https://www.businessjuice.co.uk/energy-guides/what-makes-up-your-electricity-price/
+            co2:
+                om_prod: 0.011
+    hvac_subsea_new:
+        essentials:
+            name: 'HVAC transmission (new)'
+            parent: transmission_electricity
+        costs:
+            monetary:
+                om_prod: 0.001
+            co2:
+                om_prod: 0.011
+        constraints:
+            energy_eff_per_distance: 0.995

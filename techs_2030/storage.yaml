@@ -1,0 +1,44 @@
+techs:
+    # utility-scale_battery-start
+    utility_battery:
+        essentials:
+            color: '#177202'
+            name: 'Utility-Scale BESS'
+            parent: storage_electricity
+        constraints:
+            charge_rate: 0.25  # {own_assumptions}
+            energy_eff: 0.98   # 0.98*0.98 = 0.96 round-trip eff {IRENA2017}
+            storage_cap_max: inf
+            storage_loss: 8.33e-05  # {own_assumptions}
+            lifetime: 15        # {own_assumptions}
+        costs:
+            monetary:
+                energy_cap: 630         # 2030 GBP/kW - moderate scenario - NREL
+                om_annual: 16           # 2030 GBP/kW - moderate scenario - NREL
+                om_prod: 0.00194        # 2016 GBP/kWh {own_assumptions}
+                storage_cap: 200        # 2030 GBP/kWh - moderate scenario - NREL 4hr systems
+    # utility-scale_battery-end
+
+
+    # small-scale_battery-start
+    small_scale_battery:
+        essentials:
+            color: '#B2eeb1'
+            name: 'Small-Scale BESS (new build)'
+            parent: storage_electricity
+        constraints:
+            charge_rate: 0.25  # {own_assumptions}
+            energy_eff: 0.98   # 0.98*0.98 = 0.96 round-trip eff {IRENA2017}
+            storage_cap_max: inf
+            storage_loss: 8.33e-05  # {own_assumptions}
+            lifetime: 15        # {own_assumptions}
+        costs:
+            monetary:
+                energy_cap: 1500   # 2030 GBP/kW, - average commercial/residential battery - https://atb.nrel.gov/electricity/2021/residential_battery_storage
+                om_annual: 55      # 2030 GBP/kW - average commercial/residential battery - NREL
+                om_prod: 0.00194   # 2016 GBP/kWh {own_assumptions}
+                storage_cap: 100   # 2030 GBP/kWh - BNEF Li-Ion Battery Costs
+    # small-scale_battery-end
+
+
+

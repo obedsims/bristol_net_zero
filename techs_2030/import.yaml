@@ -1,0 +1,28 @@
+techs:
+# elec-import-start
+    hvac_import:  # Generic HVAC import technology
+        essentials:
+            color: '#0f006e'
+            name: 'HVAC Import'
+            parent: supply_electricity_import
+        costs:
+            monetary:
+                om_prod: 0.0755  # £/kWh - medium est. of peak electricity wholesale prices forecasted in 2030 - https://energygain.co.uk/the-future-of-uk-electricity-rates/#:~:text=Future%20projections%20indicate%20a%2051,result%20from%20low%2Dcarbon%20policy.
+            co2:
+                om_prod: 0.011
+                om_con: 0.130   # kg CO2/kWh gross - BEIS grid average CO2 factor 2030
+# elec-import-end
+
+# green-PPA-import-start
+    green_ppa_import:  # Green PPA HVAC import technology
+        essentials:
+            color: '#D3D3D3'
+            name: 'Green PPA sleeved from outside Bristol City'
+            parent: supply_electricity_import
+        costs:
+            monetary:
+                om_prod: 0.050  # £/kWh - average est. of PPA prices in 2030
+            co2:
+                om_prod: 0.011
+                om_con: 0       # kg CO2/kWh gross - Zero Carbon PPA
+# green-PPA-import-end

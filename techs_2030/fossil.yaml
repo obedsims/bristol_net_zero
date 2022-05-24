@@ -1,0 +1,67 @@
+tech_groups:
+
+    supply_electricity_gas:
+        essentials:
+            parent: supply_electricity_fossil
+
+
+    # ccgt-start
+    ccgt_base:
+        essentials:
+            name: 'Combined Cycle Gas Turbine'
+            color: '#333333'
+            parent: supply_electricity_gas
+        constraints:
+            energy_ramping: 0.8 # source: Pfenninger UK model
+            resource: inf
+            energy_eff: 0.55
+            energy_cap_max: inf  # kW - Add generic value, this is later modified in locations_fossil.yaml
+        costs:
+            monetary:
+                energy_cap: 600         # 2030 £/kW, CCGT medium - BEIS generation costs
+                om_con: 0.041           # 2030 £/kWh fuel prices - BEIS generation costs
+                om_prod: 0.04           # 2030 Variable costs £/kWh, CCGT medium BEIS generation costs
+                om_annual: 13.1         # 2030 £/kW/yr, CCGT medium - BEIS generation costs
+            co2:
+                om_con: 0.184  # kg CO2/kWh gross - BEIS DUKES
+                om_prod: 0.488  # kg CO2eq/kWh, https://www.parliament.uk/globalassets/documents/post/postpn_383-carbon-footprint-electricity-generation.pdf
+    # ccgt-end
+
+techs:
+
+    ccgt:
+        essentials:
+            parent: ccgt_base
+
+    ccgt_new:
+        essentials:
+            color: '#FDBC5E'
+            name: 'CCGT (new build)'
+            parent: ccgt_base
+
+    ccgt_existing:
+        essentials:
+            parent: ccgt_base
+            name: 'CCGT (existing)'
+        costs:
+            monetary:
+                energy_cap: 0  # 2030 £/kW - Existing plants are written off
+
+    ccgt_ccs:
+        essentials:
+            color: '#964B00'
+            name: 'CCGT (with CCS)'
+            parent: supply_electricity_gas
+        constraints:
+            energy_eff: 0.47   # CCGT with CCS medium nth of a kind - BEIS generation costs
+            resource: inf
+            energy_cap_max: 445600
+        costs:
+            monetary:
+                energy_cap: 1400    # 2030 £/kW, CCGT medium - BEIS generation costs
+                om_prod: 0.0047     # 2030 £/kWh - fuel prices - BEIS generation costs
+                om_annual: 25.80    # 2030 £/kW/yr - O&M annual costs - CCGT medium - BEIS generation costs
+                om_con: 0.05        # 2030 £/kWh - Variable costs - CCGT medium BEIS generation costs
+            co2:                    # CO2 removal: 90% {parsons2011}
+                om_con: 0.0184      # 10% of om_fuel of non-CCS
+                om_prod: 0.170      # kg CO2eq/kWh, {ipcc_ar5_wg3}

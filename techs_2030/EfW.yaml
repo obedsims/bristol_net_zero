@@ -1,0 +1,52 @@
+tech_groups:
+
+    supply_electricity_EfW:
+        essentials:
+            parent: supply_electricity_waste
+
+
+    # EfW-start
+    EfW_base:
+        essentials:
+            color: '#FF5050'
+            name: 'Energy from Waste'
+            parent: supply_electricity_EfW
+        constraints:
+            resource: inf
+            energy_eff: 0.28        # 2030 - BEIS generation costs
+            energy_cap_max: 48800   # kW    - Existing generation - (34MW Avonmouth Resource Recovery Centre)
+            # (0.4 * 37MW Avonmouth Materials Recycling Facility (MRF) as Seabank supplies substations outside of Bristol City)
+            lifetime: 35            # 2030 - BEIS generation costs
+        costs:
+            monetary:
+                energy_cap: 8500   # 2030 £/kW - BEIS generation costs
+                om_con: -0.130     # 2030 £/kWh - waste prices are negative as councils pay to have waste taken
+                om_prod: 0.026     # 2030 £/kWh - variable costs - EfW medium BEIS generation costs
+                om_annual: 542     # 2030 £/kW/yr - Calliope Italy Study converted to £
+            co2:
+                om_con: 0.540  # kg CO2eq/kWh - https://zerowasteeurope.eu/2020/03/understanding-the-carbon-impacts-of-waste-to-energy/
+                om_prod: 0.270  # kg CO2eq/kWh, https://www.parliament.uk/globalassets/documents/post/postpn_383-carbon-footprint-electricity-generation.pdf
+    # EfW-end
+
+techs:
+
+    EfW:
+        essentials:
+            parent: EfW_base
+
+    EfW_new:
+        essentials:
+            color: '#000000'
+            name: 'EfW (new build)'
+            parent: EfW_base
+        constraints:
+            energy_cap_max: 0          # kW - Assumes no further installation of EfW plants
+
+    EfW_existing:
+        essentials:
+            name: 'EfW (existing)'
+            parent: EfW_base
+        costs:
+            monetary:
+                energy_cap: 0  # Existing plants are written off partially
+            # https://www.viridor.co.uk/who-we-are/latest-news/2021-news/avonmouth-erf-handover/
