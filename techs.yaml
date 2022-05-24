@@ -1,0 +1,54 @@
+##
+# TECHNOLOGY DEFINITIONS
+##
+
+import:
+    - techs_2030/lifetimes_and_interest_rates.yaml
+    - techs_2030/solar_wind.yaml
+    - techs_2030/fossil.yaml
+    - techs_2030/transmission.yaml
+    - techs_2030/EfW.yaml
+    - techs_2030/import.yaml
+    - techs_2030/storage.yaml
+    - techs_2030/tidal.yaml
+
+tech_groups:
+
+    supply_electricity:
+        essentials:
+            carrier: electricity
+            parent: supply
+
+    supply_electricity_renewable:
+        essentials:
+            parent: supply_electricity
+        costs:
+            domestic:
+                om_prod: 1
+
+    supply_electricity_fossil:
+        essentials:
+            parent: supply_electricity
+        costs:
+            domestic:
+                om_prod: 0.5
+
+    supply_electricity_waste:
+        essentials:
+            parent: supply_electricity
+        costs:
+            domestic:
+                om_prod: 0.5
+
+    supply_electricity_import:
+        essentials:
+            parent: supply_electricity
+        costs:
+            domestic:
+                om_prod: 0
+
+    storage_electricity:
+        essentials:
+            carrier: electricity
+            parent: storage
+
