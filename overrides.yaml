@@ -1,0 +1,350 @@
+overrides:
+
+    run_cluster:
+        run:
+            cyclic_storage: true
+            solver: gurobi
+        solver_options:
+            Method: 2
+            Crossover: -0
+            BarConvTol: 1e-4
+            BarHomogeneous: 1
+            BarIterLimit: 3000
+            OptimalityTol: 1e-4
+            FeasibilityTol: 1e-4
+
+    ##
+    # Narrative scenarios
+    ##
+
+    # Base scenario - nothing special defined; planned 2030 situation
+    base: {}
+
+    # No imports scenario - no interconnection outside of Bristol
+    no_imports:
+        locations:
+            Seabank.techs.hvac_import.constraints.energy_cap_max: 0
+            Iron Acton.techs.hvac_import.constraints.energy_cap_max: 0
+            Seabank.techs.green_ppa_import.constraints.energy_cap_max: 0
+            Iron Acton.techs.green_ppa_import.constraints.energy_cap_max: 0
+
+    ##
+    # Weather years
+    ##
+    best_year:  # FIXME to be specified
+    worst_year:  # FIXME to be specified
+    w2022:
+        model.subset_time: ['2022-01-01', '2022-12-31']
+    w2030:
+        model.subset_time: ['2030-01-01', '2030-12-31']
+
+    ##
+    # Renewable shares
+    ##
+
+    r30:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream:
+                carrier_prod_min:
+                    electricity: 0.3
+
+    r40:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream:
+                carrier_prod_min:
+                    electricity: 0.4
+
+    r50:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream:
+                carrier_prod_min:
+                    electricity: 0.5
+
+    r60:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream:
+                carrier_prod_min:
+                    electricity: 0.6
+
+    r70:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream:
+                carrier_prod_min:
+                    electricity: 0.7
+
+    r80:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream:
+                carrier_prod_min:
+                    electricity: 0.8
+
+    r90:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream:
+                carrier_prod_min:
+                    electricity: 0.9
+
+    r99:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream,ccgt_ccs,green_ppa_import:
+                carrier_prod_min:
+                    electricity: 0.99
+
+    r100:
+        model.group_share:
+            wind_onshore,wind_onshore_new,pv_rooftop,pv_rooftop_new,utility_solar,utility_solar_new,EfW_existing,EfW_new,tidal_stream,ccgt_ccs,green_ppa_import:
+                carrier_prod_min:
+                    electricity: 1.0
+
+    ##
+    # Electricity Import prices
+    ##
+
+    high_import_price:
+        techs.hvac_import.costs.monetary:
+            om_prod: 0.120      # £/kWh - peak electricity wholesale prices forecasted in 2030 - https://www.smart-energy.com/industry-sectors/business/volatile-energy-prices-set-to-continue-into-2030-across-the-uk-study/
+
+    low_import_price:
+        techs.hvac_import.costs.monetary:
+            om_prod: 0.0755     # £/kWh - peak electricity wholesale prices forecasted in 2030
+
+    ##
+    # Energy Efficiency Improvements
+    ##
+
+    eff10:
+        techs.demand_electricity:
+            constraints:
+                resource_scale: 900        # 10% energy efficiency improvement + kW to MW
+
+    eff20:
+        techs.demand_electricity:
+            constraints:
+                resource_scale: 800         # 20% energy efficiency improvement + kW to MW
+
+    ##
+    # 2030 Electricity Demand Scenarios
+    ##
+
+    elec_demand_high:       # Electrification situation with significant uptake in heat pumps and EV charging
+        techs.demand_electricity:
+            constraints:
+                resource_scale: 1300
+
+    ##
+    # Battery Costs
+    ##
+
+    cost_batt_high:
+        techs.utility_battery.costs.monetary:
+            energy_cap: 1000        # GBP/kW
+        techs.small_scale_battery.costs.monetary:
+            energy_cap: 1000        # GBP/kW
+
+    cost_batt_low:
+        techs.utility_battery.costs.monetary:
+            energy_cap: 400         # GBP/kW
+        techs.small_scale_battery.costs.monetary:
+            energy_cap: 400         # GBP/kW
+
+    ##
+    # Power Station CCS used
+    ##
+
+    ccgt_ccs_on:
+        techs.ccgt_existing.constraints.energy_cap_max: 0
+    ccgt_ccs_off:
+        techs.ccgt_existing.constraints.energy_cap_max: 0
+
+    ##
+    # Renewable PPA agreements allowed
+    ##
+
+    green_ppa_on:               # Allows a total of 100MW of green ppas to be signed across BC
+        Seabank.techs.hvac_import.constraints.energy_cap_max: 0     # Remove Normal Imports
+        Iron Acton.techs.hvac_import.constraints.energy_cap_max: 0  # Remove Normal Imports
+
+    ##
+    # Bad Year for Generation
+    ##
+
+    low_wind:
+        techs.wind_onshore_base:
+            constraints:
+                resource_scale: 0.75         # 25% reduction in generation
+    low_solar:
+        techs.utility_solar_base:
+            constraints:
+                resource_scale: 0.75         # 25% reduction in generation
+        techs.pv_rooftop_base:
+            constraints:
+                resource_scale: 0.75         # 25% reduction in generation
+    low_solar_wind:
+        techs.utility_solar_base:
+            constraints:
+                resource_scale: 0.75         # 25% reduction in generation
+        techs.pv_rooftop_base:
+            constraints:
+                resource_scale: 0.75         # 25% reduction in generation
+        techs.wind_onshore_base:
+            constraints:
+                resource_scale: 0.75         # 25% reduction in generation
+
+    ##
+    # Test configurations
+    ##
+
+    trans20:
+        links:
+            Feeder Road BSP,Bedminster:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 45000    #! This is the firm capacity of the substation (WPD Data Portal 2022)
+            Feeder Road BSP,Bishopsworth:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Feeder Road BSP,Bower Ashton:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Feeder Road BSP,Broadweir Primary:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Lockleaze BSP,Clifton:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 55200
+            Lockleaze BSP,Cotham Primary:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Lockleaze BSP,Eastville:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Feeder Road BSP,Feeder Rd 11kv:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 62100
+            Feeder Road BSP,Feeder Road B:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Lockleaze BSP,Lockleaze:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            St Pauls BSP,St Pauls Bsp 11kv:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 40224    #! Capacity < Max Demand
+            Feeder Road BSP,Filton DC:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Feeder Road BSP,Whitchurch:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 30168
+            Feeder Road BSP,Woodland Way:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 34800   #! Capacity < Max Demand - Increased to match WPD live data from 17,250kW
+            Avonmouth BSP,Avonmouth Docks:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 22500
+            Avonmouth BSP,Avonmouth Primary:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 41400
+            Avonmouth BSP,Cairns Road:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 62100
+            Avonmouth BSP,Kingsweston:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 28584
+            Avonmouth BSP,Stoke Bishop:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 20700
+            Bristol Channel,Seabank:
+                techs:
+                    hvac_subsea_new: # The maximum appropriate distance for HVAC transmission for offshore wind power is considered to be around 80 kilometres
+                        constraints:
+                            energy_cap_max: 45000     # Maximum capacity of the tidal stream turbines
+                            one_way: true
+            Avonmouth BSP,Seabank:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 108000
+            Lockleaze BSP,Iron Acton:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 108000
+            Feeder Road BSP,Iron Acton:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 228000         # Estimated based on max demand as this isn't available online
+            St Pauls BSP,Seabank:
+                techs:
+                    hvac:
+                        constraints:
+                            energy_cap_max: 40224
+
+    spores:
+        run.mode: spores
+        run.spores_options:
+            score_cost_class: 'spores_score'
+            slack_cost_group: 'systemwide_cost_max'
+            slack: 0.20                  # 10 % slack on the cost
+            spores_number: 40
+            objective_cost_class: {'monetary': 0, 'spores_score': 1}
+        run.objective_options.cost_class: {'monetary': 1, 'spores_score': 0}
+        group_constraints:
+            systemwide_cost_max.cost_max.monetary: 1e10  # very large, non-infinite value
+
+        techs.ccgt_ccs.costs.spores_score.energy_cap: 0
+        techs.ccgt_ccs.costs.spores_score.interest_rate: 1
+        techs.pv_rooftop_new.costs.spores_score.energy_cap: 0
+        techs.pv_rooftop_new.costs.spores_score.interest_rate: 1
+        techs.utility_solar_new.costs.spores_score.energy_cap: 0
+        techs.utility_solar_new.costs.spores_score.interest_rate: 1
+        techs.wind_onshore_new.costs.spores_score.energy_cap: 0
+        techs.wind_onshore_new.costs.spores_score.interest_rate: 1
+        techs.small_scale_battery.costs.spores_score.energy_cap: 0
+        techs.small_scale_battery.costs.spores_score.interest_rate: 1
+        techs.green_ppa_import.costs.spores_score.energy_cap: 0
+        techs.green_ppa_import.costs.spores_score.interest_rate: 1
+        techs.utility_battery.costs.spores_score.energy_cap: 0
+        techs.utility_battery.costs.spores_score.interest_rate: 1
+        techs.tidal_stream.costs.spores_score.energy_cap: 0
+        techs.tidal_stream.costs.spores_score.interest_rate: 1
+        techs.EfW_existing.costs.spores_score.energy_cap: 0
+        techs.EfW_existing.costs.spores_score.interest_rate: 1

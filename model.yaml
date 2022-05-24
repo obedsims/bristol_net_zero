@@ -1,0 +1,215 @@
+import:  # Import other files from paths relative to this file, or absolute paths
+    - overrides.yaml
+    - techs.yaml
+    ###
+    # Renewables
+    ###
+    - locations_2030/locations_rooftop_pv.yaml
+    - locations_2030/locations_fossil_2030.yaml
+    - locations_2030/locations_utility_solar.yaml
+    - locations_2030/locations_wind_onshore.yaml
+    - locations_2030/locations_storage.yaml
+    - locations_2030/locations_tidal.yaml
+    ###
+    # Others
+    ###
+    - locations_2030/import_2030.yaml
+    - locations_2030/transmission_grid_2030.yaml
+
+# Model configuration: all settings that affect the built model
+model:
+    name: Bristol City Decarbonisation Model
+
+    # What version of Calliope this model is intended for
+    calliope_version: 0.6.8
+
+    reserve_margin:
+        electricity: 0.1    # 10% reserve margin for power
+
+    # Time series data path - can either be a path relative to this file, or an absolute path
+    timeseries_data_path: 'timeseries_data'
+
+#    time:
+#        function: resample
+#        function_options: {'resolution': '2H'}
+
+    subset_time: ['2020-01-01', '2020-12-31']  # Subset of timesteps
+
+    random_seed: 23
+
+# Run configuration: all settings that affect how the built model is run
+run:
+#    solver: cbc
+
+    solver: gurobi
+
+    solver_options:
+        Method: 2
+        Crossover: -0
+        BarConvTol: 1e-4
+        BarHomogeneous: 1
+        BarIterLimit: 3000
+        OptimalityTol: 1e-4
+        FeasibilityTol: 1e-4
+
+
+    ensure_feasibility: true  # Switches on the "unmet demand" constraint
+
+    bigM: 1e6  # Sets the scale of unmet demand, which cannot be too high, otherwise the optimisation will not converge
+
+    zero_threshold: 1e-7  # Any value coming out of the backend that is smaller than this (due to floating point errors, probably) will be set to zero
+
+    mode: plan  # Choices: plan, operate or spores
+
+    cyclic_storage: true
+
+    objective_options.cost_class: {monetary: 1, co2: 0}
+
+techs:
+    utility_battery:
+        constraints:
+            energy_cap_max: inf
+    small_scale_battery:
+        constraints:
+            energy_cap_max: inf
+    demand_electricity:
+        essentials:
+            name: 'Electricity demand'
+            carrier: electricity
+            parent: demand
+        constraints:
+            resource: file=demand-1_resampled.csv
+            resource_scale: 1000      # kW to MW
+
+
+locations:
+    Avonmouth Docks,Avonmouth Primary,Bedminster,Bishopsworth,Bower Ashton,Broadweir Primary,Cairns Road,Clifton,Cotham Primary,Eastville,Feeder Rd 11kv,Feeder Road B,Kingsweston,Lockleaze,St Pauls Bsp 11kv,Stoke Bishop,Woodland Way,Filton DC,Whitchurch:
+        techs:  # Technologies to permit in all locations_2030 by default
+            demand_electricity:
+            pv_rooftop:
+            pv_rooftop_new:
+            utility_battery:
+            utility_solar:
+            utility_solar_new:
+            wind_onshore:
+            wind_onshore_new:
+            small_scale_battery:
+    Avonmouth Docks:
+        coordinates:
+            lat: 51.5041
+            lon: -2.7008
+    Avonmouth Primary:
+        coordinates:
+            lat: 51.5049
+            lon: -2.6967
+    Bedminster:
+        coordinates:
+            lat: 51.4416
+            lon: -2.5967
+    Bishopsworth:
+        coordinates:
+            lat: 51.4148
+            lon: -2.6076
+    Bower Ashton:
+        coordinates:
+            lat: 51.4404
+            lon: -2.627
+    Broadweir Primary:
+        coordinates:
+            lat: 51.4593
+            lon: -2.5833
+    Cairns Road:
+        coordinates:
+            lat: 51.4783
+            lon: -2.6037
+    Clifton:
+        coordinates:
+            lat: 51.4555
+            lon: -2.6122
+    Cotham Primary:
+        coordinates:
+            lat: 51.4603
+            lon: -2.6002
+    Eastville:
+        coordinates:
+            lat: 51.4682
+            lon: -2.5507
+    Feeder Rd 11kv:
+        coordinates:
+            lat: 51.4506
+            lon: -2.5668
+    Feeder Road B:
+        coordinates:
+            lat: 51.4503
+            lon: -2.567
+    Filton DC:
+        coordinates:
+            lat: 51.5094
+            lon: -2.5731
+    Kingsweston:
+        coordinates:
+            lat: 51.5113
+            lon: -2.684
+    Lockleaze:
+        coordinates:
+            lat: 51.4847
+            lon: -2.5693
+    St Pauls Bsp 11kv:
+        coordinates:
+            lat: 51.459
+            lon: -2.5829
+    Stoke Bishop:
+        coordinates:
+            lat: 51.4832
+            lon: -2.6324
+    Whitchurch:
+        coordinates:
+            lat: 51.4115
+            lon: -2.5601
+    Woodland Way:
+        coordinates:
+            lat: 51.4705
+            lon: -2.5167
+    Iron Acton:
+        techs:
+            demand_electricity:
+            hvac_import:
+        coordinates:
+            lat: 51.569142
+            lon: -2.480124
+    Seabank:
+        techs:
+            demand_electricity:
+            hvac_import:
+            EfW_existing:
+            EfW_new:
+            ccgt_existing:
+            ccgt_ccs:
+            utility_solar:
+        coordinates:
+            lat: 51.539238
+            lon: -2.669992
+    Bristol Channel:
+        techs:
+            tidal_stream:
+        coordinates:
+            lat: 51.400645      # Location selected based on tidal time series data availability, suitable tidal velocities, distance from Bristol City and minimum depth requirement (13m)
+            lon: -3.017186
+    Avonmouth BSP:
+        techs:
+            utility_solar:
+        coordinates:
+            lat: 51.5023
+            lon: -2.6805
+    Feeder Road BSP:
+        coordinates:
+            lat: 51.4506
+            lon: -2.5659
+    Lockleaze BSP:
+        coordinates:
+            lat: 51.4862
+            lon: -2.5701
+    St Pauls BSP:
+        coordinates:
+            lat: 51.459106
+            lon: -2.583216
