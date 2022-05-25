@@ -6,7 +6,6 @@ from bristol_utils import cap_loc_score_potential, cap_loc_calc, energy_loc_calc
     storage_cap_loc_calc, capacity_factor
 import seaborn as sns
 
-
 desired_width = 320
 pd.set_option('display.width', desired_width)
 pd.set_option('display.max_columns', 12)
@@ -25,24 +24,21 @@ calliope.set_log_verbosity('INFO', include_solver_output=False)
 '''
 
 # Define model
-decarb_model = calliope.Model('C:/Users/osims/Miniconda3/envs/calliope/bristol_model/model.yaml',
-                              scenario='r100,ccgt_ccs_on')
+# decarb_model = calliope.Model('/bristol_model/model.yaml', scenario='r100,ccgt_ccs_on')
 
 # Run the model
-decarb_model.run()
+# decarb_model.run()
 
-decarb_model.to_netcdf('C:/Users/osims/Miniconda3/envs/calliope/bristol_model/results/r100_ccs.nc')
-# decarb_model = calliope.read_netcdf('C:/Users/osims/Miniconda3/envs/calliope/bristol_model/results/r100_ccs.nc')
-decarb_model = calliope.read_netcdf('C:/Users/osims/Miniconda3/envs/calliope/bristol_model/results/r100_ccs_noimports.nc')
+decarb_model = calliope.read_netcdf('bristol_model/results/r100_ccs_noimports.nc')
 
-print(decarb_model.results)
+# print(decarb_model.results)
 
 plot = decarb_model.plot.timeseries(array='results', subset={'costs': ['monetary']})
 data = decarb_model.get_formatted_array('carrier_con').loc[{'carriers': 'electricity'}].sum(['locs']).to_pandas()
 
 locations = decarb_model.inputs.locs.values
 
-# Plot a s  pecific site
+# Plot a specific site
 decarb_model.plot.timeseries(array='results', subset={'costs': ['monetary'], 'locs': ['Feeder Rd 11kv']})
 
 # Plot the transmission/distribution network
@@ -66,7 +62,6 @@ decarb_cap_per_loc.to_clipboard(sep=',')
 energy_cap_max_list = decarb_model.inputs.energy_cap_max.values
 loc_techs_list = decarb_model.inputs.loc_techs.values
 energy_cap_max = pd.DataFrame(data=[energy_cap_max_list], columns=loc_techs_list)
-energy_cap_max.to_clipboard(sep=',')
 
 # Calculation of the storage capacity installed in each location (kWh)
 # storage_cap_per_loc = storage_cap_loc_calc(model, techs=tech_list)
@@ -74,14 +69,10 @@ decarb_storage_cap_per_loc = decarb_model.get_formatted_array('storage_cap').loc
     {'techs': ['utility_battery', 'small_scale_battery']}].to_pandas()
 # Add total storage capacity per region column to dataframe
 decarb_storage_cap_per_loc['total_storage_cap'] = decarb_storage_cap_per_loc.sum(axis=1)
-decarb_storage_cap_per_loc.to_clipboard(sep=',')
 
 storage_cap_max_list = decarb_model.inputs.storage_cap_max.values
 loc_storage_list = decarb_model.inputs.loc_techs_store.values
 storage_cap_max = pd.DataFrame(data=[storage_cap_max_list], columns=loc_storage_list)
-storage_cap_max.to_clipboard(sep=',')
-
-print(decarb_model.inputs)
 
 lcoes = decarb_model.results.systemwide_levelised_cost.loc[{'carriers': 'electricity', 'costs': 'monetary'}].to_pandas()
 lcoes.plot(kind='bar')
@@ -95,15 +86,15 @@ scenarios = {'scenario_20': 'r100,ccgt_ccs_on,green_ppa_on,spores'}
 i = 1
 for key, value in scenarios.items():
     print(f"{key}: {value}")
-    model = calliope.Model('C:/Users/osims/Miniconda3/envs/calliope/bristol_model/model.yaml',
+    model = calliope.Model('/bristol_model/model.yaml',
                            scenario=f'{value}')
     # Run the model
     model.run()
-    model.to_netcdf('C:/Users/osims/Miniconda3/envs/calliope/bristol_model/results/scenario_%d.nc' % i)
+    model.to_netcdf('bristol_model/results/scenario_%d.nc' % i)
     i += 1
 
 # Define model
-scenario_1 = calliope.read_netcdf('C:/Users/osims/Miniconda3/envs/calliope/bristol_model/results/scenario_1.nc')
+scenario_1 = calliope.read_netcdf('/bristol_model/results/scenario_1.nc')
 
 cap_ratio_spores = []
 stor_ratio_spores = []
