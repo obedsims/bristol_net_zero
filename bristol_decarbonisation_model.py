@@ -47,7 +47,7 @@ decarb_model.plot.timeseries(array='results', subset={'costs': ['monetary'], 'lo
 
 # Plot the transmission/distribution network
 decarb_model.plot.transmission(
-    mapbox_access_token='pk.eyJ1Ijoib2JlZHNpbXMiLCJhIjoiY2tobTB2dHE2MGNubDM4bXgzNXdyZTE2biJ9.tKUEjFrKO1JRefmLlg0JmA')
+    mapbox_access_token='xxx')
 
 # Total system cost
 total_decarb_cost = abs(decarb_model.get_formatted_array('cost').loc[{'costs': 'monetary'}].sum(['locs', 'techs']).to_pandas())
