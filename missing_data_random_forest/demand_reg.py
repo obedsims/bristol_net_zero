@@ -30,7 +30,7 @@ pd.set_option('display.width', desired_width)
 pd.set_option('display.max_columns', 12)
 
 dateparse = lambda x: datetime.strptime(x, '%d/%m/%Y %H:%M')
-data = pd.read_csv("C:/Users/osims/PycharmProjects/SolarProject/Bristol Net Zero Study/data/primary_demand_combined_csv.csv",
+data = pd.read_csv("/data/primary_demand_combined_csv.csv",
                    parse_dates=['datetime'], date_parser=dateparse)
 
 df = pd.DataFrame(data)
@@ -95,7 +95,7 @@ print('df size after removing outliers:', cleaned_df.shape,
 
 
 # Time to import the weather data near the feeder
-def add_weather_data(path=r'C:/Users/osims/PycharmProjects/SolarProject/ESC_EV_demand_forecast/Data/weather_data/'):
+def add_weather_data(path=r'weather_data/'):
     # get data file names
     filenames = glob.glob(path + "/*.csv")
 
@@ -293,7 +293,7 @@ scenarios_df['datetime'] = pd.date_range(start='2020-01-01 00:00:00',
                                          end='2020-06-10 00:00:00',
                                          freq='30T')
 
-scenarios_df.to_csv(path_or_buf='C:/Users/osims/PycharmProjects/SolarProject/Bristol Net Zero Study/model_results.csv')
+scenarios_df.to_csv(path_or_buf='model_results.csv')
 
 
 
