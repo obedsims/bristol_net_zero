@@ -8,7 +8,7 @@ The model is compatible with version ``0.6`` of the Calliope framework. See belo
 
 ## Overview
 
-All input data are and model specification are in the Model folder. In particular, timeseries data are in the 'timeseries_data' sub-folder, whilst location and tech specifications are the 'locations_2030' and 'techs_2030' folders respectively.
+The model specification is contained in the model.yaml file. Timeseries data are contained in the 'timeseries_data' sub-folder, whilst location and tech specifications are the 'locations_2030' and 'techs_2030' folders respectively.
 
 ## Data Sources
 
